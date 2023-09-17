@@ -33,6 +33,7 @@ public class HelloContoller {
             output.append(item).append(" ");
         }
         return output.toString();
+        //return array.toString(); перемудрил
     }
 
     HashMap<String, String> hash = new HashMap<>();
@@ -50,4 +51,8 @@ public class HelloContoller {
         return hash.toString();
     }
 
+    @GetMapping("/show-all-length")
+    public String ShowAllLength() {
+        return "Array List: " + array.size() + "\n"  + " Hash Map: " + hash.size();
+    }
 }
