@@ -16,13 +16,38 @@ public class HelloContoller {
 
     private List<String> array = new ArrayList<>();
     @GetMapping("/update-array")
+
     public String updateArrayList(@RequestParam(value = "array", defaultValue = "") String sense) {
         if (array.isEmpty()) {
             array = new ArrayList<>();
         }
         array.add(sense);
 
-        return array + " has been successfully added to the list";
+        return sense + " has been successfully added to the list";
             }
+
+    @GetMapping("/show-array")
+            public String showArrayList(){
+        StringBuilder output = new StringBuilder();
+        for (String item : array) {
+            output.append(item).append(" ");
+        }
+        return output.toString();
+    }
+
+    HashMap<String, String> hash = new HashMap<>();
+    @GetMapping("/update-map")
+    public String updateHashMap(@RequestParam(value = "map", defaultValue = " ") String sense) {
+        if (hash.isEmpty()) {
+            hash = new HashMap<>();
+        }
+        hash.put(sense, sense);
+        return "Added to hash map";
+    }
+
+    @GetMapping("/show-map")
+    public String showHashMap() {
+        return hash.toString();
+    }
 
 }
